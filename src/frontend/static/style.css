@@ -1,0 +1,215 @@
+:root {
+    --height-150: 150px;
+    --badge-height: 20px;
+}
+
+body > h1 {
+    text-align: center;
+}
+* {
+    font-family: 'Courier New', Courier, monospace;
+}
+#photograph {
+    box-sizing: border-box;
+    border: solid 2px rgba(0, 0, 0, 0.5);
+}
+.button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 25px;
+}
+button {
+    margin: auto;
+    width: 100px;
+    height: 30px;
+    background-color: #FF9A9A;
+    border-radius: 10%;
+    font-size: 14px;
+}
+button:hover {
+    background-color: #FF6868;
+    transition: 0.2s;
+}
+#resume {
+    margin: auto;
+    width: 210mm;
+
+    display: grid;
+    grid-template-columns: repeat(10, 10%);
+
+    box-sizing: border-box;
+    border: solid 1px black;
+
+    background-color: whitesmoke;
+    box-shadow: 15px 15px 20px rgba(90, 90, 90, 0.5);
+}
+#personal-info {
+    height: 100%;
+    grid-column-start: 1;
+    grid-column-end: 5;
+    background-color: #BBC6C8; /*lightgray*/
+    border-right: 1px solid black;
+}
+#img-container {
+    display: flex;
+    align-content: center;
+    
+}
+img {
+    margin: auto;
+    margin-top: 15px;
+    height: var(--height-150);
+    border-radius: 50%;
+
+}
+.margins {
+    margin-left: 15px;
+    margin-right: 15px;
+}
+/*Separator*/
+.separator {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 20px 0;
+    font-size: 18px;
+}
+.separator::before,
+.separator::after {
+    content: '';
+    flex-grow: 1;
+    height: 1px;
+}
+.separator::after {
+    background: linear-gradient(90deg, rgb(0, 0, 0) 53%, rgba(255,255,255,0) 100%);
+}
+.separator::before {
+    background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgb(0, 0, 0) 53%);
+}
+.text {
+    padding: 0 10px;
+}
+/*Icons*/
+.centered {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    height: 25px;
+}
+.centered > .icon {
+    height: 20px;
+    margin: auto;
+    margin-left: 15px;
+}
+.centered > .icon,
+.info-text {
+    margin-left: 15px;
+}
+.info-text {
+    width: 90%;
+}
+#name {
+    text-align: center;
+}
+a {
+    color: black;
+}
+.flex-list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+.list {
+    list-style-type: none;
+}
+/*Skills*/
+#skills-list > li {
+    height: 20px;
+    margin: 5px;
+    box-sizing: border-box;
+    border: 1px solid black;
+    border-radius: 25px;
+}
+#skills-list > li {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 10px;
+}
+/*Certifications*/
+.badge {
+    height: var(--badge-height);
+    margin: auto;
+    margin-right: 5px;
+}
+#certs-list li {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    height: var(--badge-height);
+    margin-left: 5px;
+    margin-right: 10px;
+    margin-bottom: 5px;
+}
+/*Languages*/
+.language {
+    font-weight: bold;
+}
+.lang-desc {
+    font-style: italic;
+    margin-bottom: 10px;
+}
+/*Experience and formation body*/
+#experience-and-formation {
+    height: 100%;
+    grid-column-start: 5;
+    grid-column-end: 11;
+}
+/*Resumé Title*/
+#resume-title {
+    text-align: center;
+    font-size: 30px;
+    padding-top: 15px;
+    height: var(--height-150);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+/*About me*/   
+#about-me {
+    text-align: justify;
+    font-size: 16px;
+}
+ul {
+    padding: 0;
+    margin-left: 15px;
+}
+p {
+    margin: 0;
+}
+/*Experience*/
+.job-title,
+.edu-title {
+    font-size: 18px;
+    text-align: center;
+    margin-bottom: 5px;
+}
+.job-start,
+.edu-start {
+    text-align: left;
+    margin-left: 5px;
+    margin-bottom: 5px;
+}
+.job-description {
+    margin: 0 5px 15px 5px; /*U R B L*/
+}
+.edu-start {
+    margin-bottom: 15px;
+}
+#counter {
+    margin-top: 15px;
+    text-align: center;
+}
