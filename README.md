@@ -18,11 +18,11 @@ Thanks to this project you will practice:
 My goal writting this doc is to motivate other people that, like me, wanted to change their career paths into Cloud Computing.
 
 <p align="center">Table of contents:</p>
-<ol align="center">
-    <li>Project design</li>
-    <li>Building the front end</li>
-    <li>Building the API</li>
-    <li>Front-end / back-end integration</li>
-    <li>Deployment</li>
-    <li>Things to improve</li>
+<ol>
+    <li align="center">Project design</li>
+    <li align="center">Building the front end</li>
+    <li align="center">Building the API</li>
+    <li align="center">Front-end / back-end integration</li>
+    <li align="center">Deployment</li>
+    <li align="center">Things to improve</li>
 </ol>
