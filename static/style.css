@@ -33,7 +33,7 @@ button:hover {
 }
 #resume {
     margin: auto;
-    width: 210mm;
+    width: 230mm;
 
     display: grid;
     grid-template-columns: repeat(10, 10%);
