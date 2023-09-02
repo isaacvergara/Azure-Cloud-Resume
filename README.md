@@ -17,12 +17,22 @@ Thanks to this project you will practice:
 
 My goal writting this doc is to motivate other people that, like me, wanted to change their career paths into Cloud Computing.
 
-<p align="center">Table of contents:</p>
+<p>Table of contents:</p>
 <ol>
-    <li align="center">Project design</li>
-    <li align="center">Building the front end</li>
-    <li align="center">Building the API</li>
-    <li align="center">Front-end / back-end integration</li>
-    <li align="center">Deployment</li>
-    <li align="center">Things to improve</li>
+    <li>Project description</li>
+    <li>Project design</li>
+    <li>Building the front end</li>
+    <li>Building the API</li>
+    <li>Front-end / back-end integration</li>
+    <li>Deployment</li>
+    <li>Things to improve</li>
 </ol>
+
+## 1. Project description
+The project consists on deploying a static website on Azure CDN with a custom endpoint. The website content will have a resumé in a A4 sheet format.
+The website will also include a counter of visitors, which will show how many times the website has been visited.
+This counter will consist on an Azure Function app that will be triggered by a JS http request, the function will get, update, save and return the counters value.
+The counter info will be stored in a cosmodb.
+
+## 2. Project diagram
+![image](https://github.com/isaacvergara/azure-cloud-resume/assets/65440371/d714d1c0-4988-4b91-91dc-5ec6c986bf4f)
