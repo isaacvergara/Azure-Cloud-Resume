@@ -38,6 +38,7 @@ In this project (like I do it) you will practice: Azure resource like CDN, stora
 
 ## 4. Project design
 Project architecture:
+
 ![image](https://github.com/isaacvergara/azure-cloud-resume/assets/65440371/b5cf126b-8e72-4934-aebb-854a54c72c50)
 
 A client will retrieve the static website from a CND endpoint and, after it is rendered in the client browser, a JS code will trigger an Azure function, that will get the visitor's counter from a db, updates it and returns it to load it into the HTML static site.
