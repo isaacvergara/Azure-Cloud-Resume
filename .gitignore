@@ -2,3 +2,5 @@ frontend/
 terraform.tfstate
 terraform.tfstate.backup
 sensitive.auto.tfvars
+.terraform/
+.terraform
