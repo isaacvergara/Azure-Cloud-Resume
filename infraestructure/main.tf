@@ -2,7 +2,6 @@ resource "azurerm_resource_group" "rg-azurecloudresume" {
   name     = join("-", ["rg", var.projectname])
   location = var.location
 }
-
 # Storage account name
 resource "random_string" "sa-name" {
   length  = 24
@@ -25,5 +24,16 @@ resource "azurerm_storage_account" "sa-azurecloudresume" {
   tags = {
     projectname = var.projectname
     stage       = "Production"
+  }
+}
+
+# CDN
+module "static_site" {
+  source = "./modules/cdn"
+
+  projectname         = var.projectname
+  resource_group_name = azurerm_resource_group.rg-azurecloudresume.name
+  endpoint = {
+    static_site_endpoint = azurerm_storage_account.sa-azurecloudresume.primary_web_host
   }
 }
