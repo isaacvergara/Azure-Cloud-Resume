@@ -14,7 +14,7 @@ resource "azurerm_cdn_endpoint" "resume_endpoint" {
   profile_name = azurerm_cdn_profile.resume.name
   location = var.location
   resource_group_name = var.resource_group_name
-  is_http_allowed = false
+  is_http_allowed = true
   is_https_allowed = true
   origin {
     name = "static-website-origin"
