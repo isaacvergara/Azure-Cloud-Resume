@@ -1,32 +1,33 @@
-locals {
-  custom_domain = "www.isaacvergara.com"
-  endpoint_name = "isaacvergara-static-website"
-}
-# CDN Profile
-resource "azurerm_cdn_profile" "resume" {
-    name = join("-", ["cdn", var.projectname])
-    location = var.location
-    resource_group_name = var.resource_group_name
-    sku = "Standard_Microsoft"
-}
-resource "azurerm_cdn_endpoint" "resume_endpoint" {
-  name = "static-website"
-  profile_name = azurerm_cdn_profile.resume.name
-  location = var.location
+# Create storage account for functions to store
+resource "azurerm_storage_account" "functionapp-sa" {
+  name = var.storage_account_name
   resource_group_name = var.resource_group_name
-  is_http_allowed = false
-  is_https_allowed = true
-  origin {
-    name = "static-website-origin"
-    host_name = var.endpoint.static_site_endpoint
-  }
+  location = var.location
+  account_tier = "Standard"
+  account_replication_type = "LRS"
 }
-resource "azurerm_cdn_endpoint_custom_domain" "resume" {
-    name = local.endpoint_name
-    cdn_endpoint_id = azurerm_cdn_endpoint.resume_endpoint.id
-    host_name = local.custom_domain
-    #cdn_managed_https {
-    #  certificate_type = "Dedicated"
-    #  protocol_type = "ServerNameIndication"
-    #}
+
+# Create app service plan
+resource "azurerm_service_plan" "app_service_plan" {
+  name = join("-", ["asp", var.projectname])
+  resource_group_name = var.resource_group_name
+  location = var.location
+  os_type = var.app_service_plan.os_type
+  sku_name = var.app_service_plan.sku_name # Defaults to consumption plan
+}
+
+# Create function app
+resource "azurerm_linux_function_app" "function_app" {
+    location = var.location
+    storage_account_name = azurerm_storage_account.functionapp-sa.name
+    storage_account_access_key = azurerm_storage_account.functionapp-sa.primary_access_key
+    name = var.app_config.function_app_name
+    resource_group_name = var.resource_group_name
+    service_plan_id = azurerm_service_plan.app_service_plan.id
+    site_config {
+        application_stack {
+            python_version = var.app_config.python_version
+        }
+    }
+    https_only = true # https enforced
 }
