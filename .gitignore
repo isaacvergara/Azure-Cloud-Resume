@@ -1,3 +1,1 @@
-terraform.tfstate
-terraform.tfstate.backup
-sensitive_data.auto.tfvars
+.gitignore
