@@ -28,6 +28,16 @@ resource "azurerm_linux_function_app" "function_app" {
         application_stack {
             python_version = var.app_config.python_version
         }
+        cors {
+            support_credentials = var.site_config.cors.support_credentials
+            allowed_origins = var.site_config.cors.allowed_origins
+        }
     }
     https_only = true # https enforced
+    app_settings = {
+      "connection_string" = var.app_settings.connection_string
+      "partition_key" = var.app_settings.partition_key
+      "row_key" = var.app_settings.row_key
+      "table_name" = var.app_settings.table_name
+    }
 }
