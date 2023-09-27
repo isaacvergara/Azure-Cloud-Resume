@@ -1,7 +1,7 @@
 # Create cosmo db with Table API
 resource "azurerm_cosmosdb_account" "cosmodb-account" {
     name = var.cosmosdb_name
-    location = var.location
+    location = "West Europe"
     resource_group_name = var.resource_group_name
     offer_type = "Standard"
     kind = "GlobalDocumentDB"
@@ -12,12 +12,15 @@ resource "azurerm_cosmosdb_account" "cosmodb-account" {
       name = "EnableServerless"
     }
     geo_location {
-        location = "West US"
+        location = var.location
         failover_priority = 0
     }
     # Continuous backup
     backup {
-      type = "Continuous"
+      type = "Periodic"
+      interval_in_minutes = 1440
+      retention_in_hours = 8
+      storage_redundancy = "Local"
     }
     consistency_policy {
       consistency_level = "BoundedStaleness"
