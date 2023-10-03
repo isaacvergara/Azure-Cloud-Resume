@@ -11,6 +11,7 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
     connection_string = os.environ['connection_string']
     table_name = os.environ['table_name']
     table_client = TableClient.from_connection_string(connection_string, table_name)
+    logging.info('Connection has been established.')
     
     row_key = os.environ['row_key']
     partition_key = os.environ['partition_key']
@@ -21,6 +22,7 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
     # Update entity
     entity['counter_value'] = counter_value
     table_client.update_entity(entity=entity)
+    logging.info('Value has been updated from {} to {}.'.format(int(counter_value) - 1, int(counter_value)))
 
     return func.HttpResponse(
         counter_value
