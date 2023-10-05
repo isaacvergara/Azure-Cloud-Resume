@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # My Azure Cloud Resumé
 ## Summary
 This project is based on the challenge of a book called "The Cloud Resume Challenge Book" written by Forrest Brazeal. It consist on a series of guided steps to build an html-based resumé and deploy it on several Cloud providers (Azure in my case).
@@ -46,13 +45,3 @@ A client will retrieve the static website from a CND endpoint and, after it is r
 
 Frontend design:
 I am not a big fan of front-end development due to my lack of skills of the art of choosing the right color (why not put a black button with green text?) but the idea that I had was simple, I wanted my portfolio to look like the PDF resumé that you send to all the people you can when you try to land a job (I don't do that, obviously I got hired on the first attempt).
-
-
-
-
-=======
-# azure-cloud-resume-backend
-
-This repository belongs to the backend (both infraestructure and code) of the project https://github.com/isaacvergara/azure-cloud-resume.
-All documentation about this project is in the other repository.
->>>>>>> backend/main
