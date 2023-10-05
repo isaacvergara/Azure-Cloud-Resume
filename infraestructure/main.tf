@@ -81,6 +81,9 @@ module "function_app" {
       allowed_origins     = var.site_config.cors.allowed_origins
       support_credentials = false
     }
+    application_insights_connection_string = var.site_config.application_insights_connection_string
+    application_insights_key               = var.site_config.application_insights_key
   }
+  sticky_settings = var.sticky_settings
 }
 

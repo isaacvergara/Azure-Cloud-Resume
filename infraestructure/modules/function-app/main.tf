@@ -32,6 +32,11 @@ resource "azurerm_linux_function_app" "function_app" {
             support_credentials = var.site_config.cors.support_credentials
             allowed_origins = var.site_config.cors.allowed_origins
         }
+        application_insights_connection_string = var.site_config.application_insights_connection_string
+        application_insights_key = var.site_config.application_insights_key
+    }
+    sticky_settings {
+      app_setting_names = var.sticky_settings.app_setting_names
     }
     https_only = true # https enforced
     app_settings = {
