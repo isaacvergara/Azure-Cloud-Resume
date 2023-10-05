@@ -1,1 +1,6 @@
 .gitignore
+*/.DS_Store
+infraestructure/.terraform/
+infraestructure/sensitive.auto.tfvars
+infraestructure/terraform.tfstate
+infraestructure/terraform.tfstate.backup
