@@ -2,46 +2,35 @@
 ## Summary
 This project is based on the challenge of a book called "The Cloud Resume Challenge Book" written by Forrest Brazeal. It consist on a series of guided steps to build an html-based resumé and deploy it on several Cloud providers (Azure in my case).
 
-This project lets you gain hands-on experience. 
-The book works as a guid, but not as a tutorial, thing which I like because it forces you to deep dive into docs and having a more analytical thinking when you encounter an issue.
+This project lets you gain hands-on experience with a project that you can further use as a CV or as a portfolio.
 
-This post will be written in a similar way as the book, I will not be giving a step-by-step tutorial, instead I will explain what I've learnt during the process and what can you expect if you try to make this challenge from 0 experience just like I did it.
+The project consists on a series of steps:
+1. Create the frontend.
+2. Deploy a CDN with the frontend.
+3. Deploy a Cosmo DB database and an Azure Function for the backend.
+4. Create the backend of the app.
+5. Integrate both.
 
-<p>Table of contents:</p>
-<ol>
-    <li>Why I made this project?</li>
-    <li>What to expect from the challenge?</li>
-    <li>What will you practice in this project?</li>
-    <li>Project design</li>
-    <li>Project structure</li>
-    <li>
-        Project steps:
-        <ul>
-            <li>Frontend</li>
-            <li>Create a CND endpoint and deploy Frontend</li>
-            <li>Deploy needed infraestructure for the backend</li>
-            <li>Create backend (Azure functions)</li>
-        </ul>
-    </li>
-    <li>How to improve the project</li>
-</ol>
+You can visit my result at www.isaacvergara.com.
 
-## 1. Why I made this project?
-I started this project after I got the az-900, az-104 and Terraform associated certifications.
-Sometimes when you're studying for certifications and exams you have the feeling that you know concepts, but you don't know how to apply them in real life projects. This project is small, but it gives you a challenge to gain more confidence for further projects.
+## Project Design
+![image](https://github.com/isaacvergara/azure-cloud-resume/assets/65440371/468e791a-404f-4621-94a7-644e564016cd)
 
-## 2. What to expect from this project?
-You can expect to gain some hands-on experience on the cloud environment.
+In the project all the infraestructure will be deployed via IaC with the Terraform tool. 
 
-## 3. What will you practice in this project?
-In this project (like I do it) you will practice: Azure resource like CDN, storage accounts, Azure functions, Azure CosmoDB; Terraform (what I use to deploy resources); git (all code will be saved on a GitHub respositopry), Python, HTML, CSS and JS.
+The frontend will be deployed in a CDN endpoint that has as an origin the static website of an Storage account. This static website will execute a JS function that will trigger via HTTPS an Azure Function to query and update the number of times the website has been visited.
 
-## 4. Project design
-Project architecture:
+The Function app will also be linked to an App Insights to review metrics and performance of the Azure Function.
 
-![image](https://github.com/isaacvergara/azure-cloud-resume/assets/65440371/b5cf126b-8e72-4934-aebb-854a54c72c50)
+## Project implementation steps
+### 1. Design static frontend
+In this step you will create the frontend via HTML and CSS. You can do exactly whatever you find necessary. I did mine as if it was a printed CV.
 
-A client will retrieve the static website from a CND endpoint and, after it is rendered in the client browser, a JS code will trigger an Azure function, that will get the visitor's counter from a db, updates it and returns it to load it into the HTML static site.
+After you design and develop your static site you should also write a js function that will call the Azure Function that will be deployed later.
 
-Frontend design:
-I am not a big fan of front-end development due to my lack of skills of the art of choosing the right color (why not put a black button with green text?) but the idea that I had was simple, I wanted my portfolio to look like the PDF resumé that you send to all the people you can when you try to land a job (I don't do that, obviously I got hired on the first attempt).
+### 2. Deploy the frontend
+1. Deploy a storage account with the parameter "Static website enabled".
+2. Upload the site to the blob container $web that will be created on the Storage account.
+3. Deploy a CDN profile with an endpoint which origin will be the static site of the SA.
+4. Create a CNAME registry on your DNS provider mapping to the endpoint.
+5. Deploy a custom domain (the CDN will now answer to the requests made to your domain).
